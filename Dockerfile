@@ -1,6 +1,6 @@
 FROM python:3.9.6-slim-buster
 
-ARG TOOLS_VERSION=1.0.2
+ARG TOOLS_VERSION=1.0.3
 
 LABEL \
   maintainer="Michael K" \
@@ -13,10 +13,10 @@ LABEL \
 
 # https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html
 # https://github.com/kubernetes/kubectl/releases
-ARG KUBE_VERSION=1.21.3
+ARG KUBE_VERSION=1.24.17
 
 # https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
-ARG AWS_IAM_AUTHENTICATOR_VERSION=1.21.2
+ARG AWS_IAM_AUTHENTICATOR_VERSION=1.24.17
 
 # https://github.com/helm/helm/releases
 ARG HELM_VERSION=3.6.3
@@ -46,7 +46,7 @@ RUN apt update && \
     curl https://storage.googleapis.com/kubernetes-release/release/v${KUBE_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && \
     chmod +x /usr/local/bin/kubectl \
     && \
-    curl https://amazon-eks.s3-us-west-2.amazonaws.com/${AWS_IAM_AUTHENTICATOR_VERSION}/2021-07-05/bin/linux/amd64/aws-iam-authenticator -o /usr/local/bin/aws-iam-authenticator && \
+    curl https://amazon-eks.s3-us-west-2.amazonaws.com/${AWS_IAM_AUTHENTICATOR_VERSION}/2024-01-04/bin/linux/amd64/aws-iam-authenticator -o /usr/local/bin/aws-iam-authenticator && \
     chmod +x /usr/local/bin/aws-iam-authenticator \
     && \
     curl https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -xzO linux-amd64/helm > /usr/local/bin/helm && \
